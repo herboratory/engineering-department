@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>telegram on Department of Engineering</title>
+    <link>https://herboratory.github.io/engineering-department/en/tags/telegram/</link>
+    <description>Recent content in telegram on Department of Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/en/tags/telegram/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Release of Cynanchun kun🤖️ Search-bot</title>
+      <link>https://herboratory.github.io/engineering-department/en/posts/2020/07/release-of-cynanchun-kun%EF%B8%8F-search-bot/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/en/posts/2020/07/release-of-cynanchun-kun%EF%B8%8F-search-bot/</guid>
+      <description>Project Information: Cynanchum kun🤖️ is a tutorial-based classics searching chatbot. Except its function as TCM classics searching, another main purpose is to write a latest tutorial with python-telegram-bot to build a Telegram chat bot.
+At the moment, available classics includes: Inner Canon of the Yellow Emperor - Basic Questions (《黃帝內經素問》) (in English or Chinese), Treatise on Cold Damage Diseases（《傷寒論》）(in Chinese), Shennong’s Classic of Materia Medica（《神農本草經》）(in Chinese) and Classic of Difficult Issues（《難經》）(in Chinese).</description>
+    </item>
+    
+  </channel>
+</rss>

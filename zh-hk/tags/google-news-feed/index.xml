@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>google-news-feed on 工程部</title>
+    <link>https://herboratory.github.io/engineering-department/zh-hk/tags/google-news-feed/</link>
+    <description>Recent content in google-news-feed on 工程部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 18 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/zh-hk/tags/google-news-feed/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在Python使用scraparazzie尋找新聞並透過LINE Notify發送</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/%E5%9C%A8python%E4%BD%BF%E7%94%A8scraparazzie%E5%B0%8B%E6%89%BE%E6%96%B0%E8%81%9E%E4%B8%A6%E9%80%8F%E9%81%8Eline-notify%E7%99%BC%E9%80%81/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/%E5%9C%A8python%E4%BD%BF%E7%94%A8scraparazzie%E5%B0%8B%E6%89%BE%E6%96%B0%E8%81%9E%E4%B8%A6%E9%80%8F%E9%81%8Eline-notify%E7%99%BC%E9%80%81/</guid>
+      <description>當初做scraparazzie這個套件的目的，是希望可以抓自己有興趣的topic和keywords的新聞傳送到某個IM的bot，就能根據之後自己再設定隨時看到新聞，方便自己炒股和追蹤農業災害新聞（啊&amp;hellip;因為想要炒commodity嘛🤫）。但我並不需要內文，只需要標題、新聞來源和發布時間就好，有興趣再click連結去看。偶然看到LINE Notify的教學，就拿來實作一下吧。
+開發環境：Python 3.7
+另外也需要LINE Notify的權杖，因此會需要有LINE帳號。接下來先step-by-step介紹申請LINE Notify權杖的部分。
+STEP 1:  至 https://notify-bot.line.me/zh_TW/ 進行登入 點選右上方 帳號名稱選單中的「個人頁面」（My page）   點選【發行權杖】（Generate token）   輸入自訂「權杖名稱」, 這邊設定的名稱會在出現在提醒訊息的Title 選擇第一個【透過1對1聊天接受LINE Notify的通知】（1-on-1 chat with LINE Notify） ，然後按下「發行」（Generate token）  按下「發行」後，就會顯示權杖。請將權杖內容「複製」並記下來！程式與LINE Notify溝通就是靠這個權杖！
+LINE Notify設定的部分大概到這裡結束。
+STEP 2:  建立 lineNotifyMessage.py 檔案 在token部分，記得將剛剛在LINE Notify記下的權杖貼上去  from scraparazzie import scraparazzie import requests import time from random import randrange # LINE Notify的部分｜LINE Notify setting token = &amp;#34;paste_your_token_here&amp;#34; # 從LINE Notify獲得的權杖｜Token from LINE Notify def lineNotifyMessage(token, msg): # LINE Notify傳訊息的設定｜Message sending setting of LINE Notify headers = { &amp;#34;Authorization&amp;#34;: &amp;#34;Bearer &amp;#34; + token, &amp;#34;Content-Type&amp;#34; : &amp;#34;application/x-www-form-urlencoded&amp;#34; } payload = {&amp;#39;message&amp;#39;: msg} r = requests.</description>
+    </item>
+    
+    <item>
+      <title>Scraparazzie 發佈</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/scraparazzie-%E7%99%BC%E4%BD%88/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/scraparazzie-%E7%99%BC%E4%BD%88/</guid>
+      <description>專案資料： scraparazzie是一個能利用關鍵字或選擇特定topic搜尋Google News feeds的Python package。
+大概花了四天時間時間做了scraparazzie，一個能搜尋Google News feeds的套件。這個套件是以gnewsclient為框架，進行修改。在原有基礎上增建功能。
+gnewsclient原有功能：  能設定語言、地區、topic和output結果項數； 能顯示新聞圖片連結和影片資料；  scraparazzie所修改功能：  output格式增加發佈日期時間； 除了原有topic搜尋，增加關鍵字搜尋（但只限於topic或關鍵字二選一搜尋，並以關鍵字為優先搜尋項目）； 去除顯示新聞圖片連結和影片資料 搜尋結果從最新到最舊列出； 匯出list功能  當初寫這個套件是因為個人需求，需要一天固定時間搜尋世界各地媒體發新聞標題、發布來源、發佈日期時間等資訊給我再作處理。之前找過不少教學，通常用是用newspaper3k或者自行用beautifulsoup自己寫出來。雖然也有Google News的，但是功能不多，這個套件有什麼特別呢？主要是Python能用的Google News套件不多，github上相關的大概有google-news-scraper、GoogleNews、google_news、gnp和gnewsclient。基本上比較能用、比較符合我的需求只有gnewsclient，但偏偏沒有顯示發佈日期時間功能。本來直接想在package上改來用，後來發現不好改，而且有其他功能想要加進去。把心一橫就把package的框架保留，裡面爬新聞、output新聞部分另外處理。搗鼓了好幾天、撞牆了好幾天，經過一堆大神協助，今天終於進入尾聲。收尾前，看到gnewsclient有人問能否加入搜尋新聞功能，看了下不難，就加入關鍵字搜尋功能。然後就把給打包成package，發出人生第一個python package。（感覺是否應該慶祝一下？畢竟作為個非專業的哎呀碼農&amp;hellip;😬）發出後才想到想要把結果output成list方便後續處理，然後又搗鼓了一下，然後就已經是1.2.4了。
+v1.2.4為相對穩定版本，在更新成v1.2.4過程再測試遇到的情形都有處理，因此出現error的情形應該會減少。若有任何問題，請到Github那邊issue吧。</description>
+    </item>
+    
+  </channel>
+</rss>

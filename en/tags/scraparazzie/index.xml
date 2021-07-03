@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scraparazzie on Department of Engineering</title>
+    <link>https://herboratory.github.io/engineering-department/en/tags/scraparazzie/</link>
+    <description>Recent content in scraparazzie on Department of Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 18 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/en/tags/scraparazzie/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using scraparazzie to search news and send through LINE Notify in Python</title>
+      <link>https://herboratory.github.io/engineering-department/en/posts/2020/04/using-scraparazzie-to-search-news-and-send-through-line-notify-in-python/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/en/posts/2020/04/using-scraparazzie-to-search-news-and-send-through-line-notify-in-python/</guid>
+      <description>When the idea came up to make the package scraparazzie, the main purpose is to grab news by topics and keywords. Since I don&amp;rsquo;t really need the news content but title, source and publish date, so that I can receive news with further setting and send the results to an IM bot. That&amp;rsquo;s why I made scraprazzie. And, yes, mainly for stock market and agriculture news (eh&amp;hellip;target in commodities🤫) Somehow I found a tutorial about application in LINE Notify, so let&amp;rsquo;s do it!</description>
+    </item>
+    
+    <item>
+      <title>Scraparazzie Release</title>
+      <link>https://herboratory.github.io/engineering-department/en/posts/2020/04/scraparazzie-release/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/en/posts/2020/04/scraparazzie-release/</guid>
+      <description>Project Information: scraparazzie is a Python package for searching specific topic or keywords of Google News feeds. It had been spending for around 4 days to deal with scraparazzie, a python package for searching Google News feeds. This package is based on gnewsclient as framework to modify and enhance features.
+Features that gnewsclient have:  Available to set language, location, topic and number of output items for searching; Available to show image and video (if there is) link of the news  Features that scraparazzie have:  Available to show publish datetime; Except topic, keywords searching is included (either topic or keyword searching, and keyword searching is the top priority searching); Take away the feature to show image and video (if there is) link of the news; Result shows from latest to oldest; Export as list  The main reason I decided to deal with this project is personal use - I need a something that can help me to collect latest news with title, source, link and publish date at fixed time for further application.</description>
+    </item>
+    
+  </channel>
+</rss>

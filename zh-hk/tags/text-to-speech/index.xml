@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>text-to-speech on 工程部</title>
+    <link>https://herboratory.github.io/engineering-department/zh-hk/tags/text-to-speech/</link>
+    <description>Recent content in text-to-speech on 工程部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/zh-hk/tags/text-to-speech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用Python建立text-to-speech的browser web app</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2021/07/%E5%88%A9%E7%94%A8python%E5%BB%BA%E7%AB%8Btext-to-speech%E7%9A%84browser-web-app/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2021/07/%E5%88%A9%E7%94%A8python%E5%BB%BA%E7%AB%8Btext-to-speech%E7%9A%84browser-web-app/</guid>
+      <description>【這個程式的緣起】 之前父親節，很多人都會費盡心思準備父親節禮物，當然我也不例外。可是我是窮L，也不知道該買啥 - 老父是個學習宅，以前連我老母也是個宅 - 我肯定是他們親生的，因為我也是個宅。碰巧最近老父又迷上學習語言，而之前我因為上剪片workshop要繳交作業，為了不出鏡不出聲，於是用Python寫了個利用Google的text-to-speech（TTS）服務的程式把講稿generate成MP3，我爸就對這個程式很有興趣。但是因為是一堆code，估計也有點嚇怕了他。於是趁著父親節，就把這個程式加工，用django搭建個web app，讓老爸可以按一按就能有個MP3檔案。雖然之前跟著Mozilla的tutorial做了個個人圖書管理程式，但對django還是不算熟悉，因此建立這個TTS app也經歷不少鬼打牆的時光。所以一邊做一邊記錄在案，下面的內容就是做的時候的筆記。
+不囉嗦！開動唄！
+【環境】 OS：MacOS Big Sur 11.0.1 環境：Python 3.7
+【部署虛擬環境】 project獨立開個虛擬環境來做，方便管理雜七雜八的packages。首先先自己找個自己爽的地方弄個folder將之後的東西集中處理，然後在Terminal輸入以下的code：
+python3 -m venv playground source playground/bin/activate pip install --upgrade pip 【安裝需要的packages】 接下來安裝需要的packages
+pip install django pip install --upgrade google-cloud-texttospeech # Google的text-to-speech服務的Python package 【建立project】 安裝需要的package後，就開始利用django建立project：
+django-admin startproject tts_converter 【setting.py調整】 打開tts_converter/tts_converter/settings.py。
+1. 配置資料庫 Django default用SQLite。在這個項目裡，基本上不太會需要用到很多存取行為，頂多就是有session，因此我們也使用SQLite。所以在這裏不需要額外的配置工作。若想要用其他的database，可參考這裏
+DATABASES = { &amp;#39;default&amp;#39;: { &amp;#39;ENGINE&amp;#39;: &amp;#39;django.db.backends.sqlite3&amp;#39;, &amp;#39;NAME&amp;#39;: os.path.join(BASE_DIR, &amp;#39;db.sqlite3&amp;#39;), } } 2. 其他設置 LANGUAGE_CODE = &amp;#39;en-gb&amp;#39; # 語言 TIME_ZONE = &amp;#39;Asia/Hong_Kong&amp;#39; # 時區 3.</description>
+    </item>
+    
+  </channel>
+</rss>

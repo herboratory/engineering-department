@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="map[name:工程部]">
+<meta name="description" content="Rasa安裝教學與詞量源雜七雜八的選取的心得" />
+<meta name="keywords" content="coding, chinese-medicine, blogging, rasa, chatbot" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://herboratory.github.io/engineering-department/zh-hk/posts/2021/06/rasa%E6%90%97%E9%BC%93%E7%AD%86%E8%A8%98-%E5%AE%89%E8%A3%9D/" />
+
+
+    <title>
+        
+            Rasa搗鼓筆記 - 安裝 :: 工程部  — 中醫，天人之學。
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://herboratory.github.io/engineering-department/main.031a8efc33f94f55a4071bf4e91596478a5809fc8c148fab113801189cfd2152.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://herboratory.github.io/engineering-department/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://herboratory.github.io/engineering-department/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://herboratory.github.io/engineering-department/favicon-16x16.png">
+    <link rel="manifest" href="https://herboratory.github.io/engineering-department/site.webmanifest">
+    <link rel="mask-icon" href="https://herboratory.github.io/engineering-department/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://herboratory.github.io/engineering-department/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="Rasa搗鼓筆記 - 安裝">
+<meta itemprop="description" content="Rasa安裝教學與詞量源雜七雜八的選取的心得"><meta itemprop="datePublished" content="2021-06-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="149"><meta itemprop="image" content="https://herboratory.github.io/engineering-department"/>
+<meta itemprop="keywords" content="rasa,chatbot," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://herboratory.github.io/engineering-department"/>
+
+<meta name="twitter:title" content="Rasa搗鼓筆記 - 安裝"/>
+<meta name="twitter:description" content="Rasa安裝教學與詞量源雜七雜八的選取的心得"/>
+
+
+
+
+    <meta property="og:title" content="Rasa搗鼓筆記 - 安裝" />
+<meta property="og:description" content="Rasa安裝教學與詞量源雜七雜八的選取的心得" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://herboratory.github.io/engineering-department/zh-hk/posts/2021/06/rasa%E6%90%97%E9%BC%93%E7%AD%86%E8%A8%98-%E5%AE%89%E8%A3%9D/" /><meta property="og:image" content="https://herboratory.github.io/engineering-department"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" /><meta property="og:site_name" content="工程部" />
+
+
+
+
+
+    <meta property="article:section" content="python" />
+
+    <meta property="article:section" content="tutorial" />
+
+
+
+    <meta property="article:published_time" content="2021-06-17 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://herboratory.github.io/engineering-department/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd 扶疏堂研究所｜Herboratory/home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#5B5B5B;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://herboratory.github.io/engineering-department/zh-hk/posts/">文章</a></li><li><a href="https://herboratory.github.io/engineering-department/zh-hk/about/">關於</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+            
+                
+                    <a class="button is-small is-danger is-rounded" href="https://herboratory.github.io/engineering-department/">English</a>
+                
+            
+            <span class="theme-toggle">
+                <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+            </span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        1分鐘
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://herboratory.github.io/engineering-department/zh-hk/posts/2021/06/rasa%E6%90%97%E9%BC%93%E7%AD%86%E8%A8%98-%E5%AE%89%E8%A3%9D/">Rasa搗鼓筆記 - 安裝</a>
+      </h1>
+
+      
+        <div class="post-excerpt">Rasa安裝教學與詞量源雜七雜八的選取的心得</div>
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>好幾年前&hellip;大概是前年吧，想要做智能一點的chatbot，用過chatterbot效果不算好；想要用Rasa，大概太老了連安裝都安裝不了，搞了好幾天最後放棄了。由於最近還是皮癢加上個人健康需求還是想要做個比較聰明點的chatbot，最後還是忍不住想要再搗鼓Rasa。因此就試看看唄。經過一天收集閱讀消化資料，找了一堆tutorials，以中文為語言的的基本上內容離不開哪些，看完還是覺得知識和操作很零碎，也不想只是純粹跟tutorial去做，因此稍微找了些資料才去試著安裝，這次終於成功了。下面的步驟是經過測試OK的。</p>
+<p>開始講安裝前，快速飄過介紹下Rasa唄。</p>
+<p>Rasa是一個open source的machine learning框架，用於構建上下文AI assistant和chatbot。Rasa有兩個主要模塊：<!-- raw HTML omitted -->
+NLU：實現意圖識別和槽值提取，它把用戶的輸入轉換為結構化數據<!-- raw HTML omitted -->
+Core：是一個對話管理平台，用於預測、決定下一步做什麼</p>
+<p>還有一個是Rasa X。Rasa X是一個可幫助構建、改進和部署由Rasa框架提供支持的AI assistants的工具。</p>
+<h2 id="安裝流程">【安裝流程】</h2>
+<h3 id="environment">Environment:</h3>
+<p>建議Python 3.6 - 3.8之間，不support 3.9，尤其打算使用Rasa X。安裝時我用Python 3.7，OS環境是MacOS Big Sur 11.0.1。</p>
+<h3 id="virtual-environment-setting">Virtual Environment Setting:</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python3 <span style="color:#f92672">-</span>m venv whatever<span style="color:#f92672">-</span>name
+</code></pre></div><h3 id="upgrade-package">Upgrade Package:</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install <span style="color:#f92672">--</span>upgrade pip
+</code></pre></div><h3 id="before-installing">Before Installing:</h3>
+<p>在Rasa NLU模塊中，提供了一種名為Pipline(管道)配置方式，傳入的消息(Message)通過管道(Pipline)中一系列組件(Component)處理後得到最終的模型。</p>
+<p><img src="https://rasa.com/docs/rasa/ideal-img/component-lifecycle-img.0111328.1202.png" alt=""></p>
+<p>上圖參考自<a href="https://rasa.com/docs/rasa/tuning-your-model">Rasa</a>。</p>
+<p>管道由多個組件構成，每個組件有各自的功能，比如實體提取、意圖分類、響應選擇、預處理等，這些組件在管道中一個接著一個的執行，每個組件處理輸入並創建輸出，並且輸出可以被該組件之後管道中任何組件使用。當然，有些組件只生成管道中其他組件使用的信息，有些組件生成Output屬性，這些Output屬性將在處理完成後返回。因此選擇components要根據目標需求而定。<a href="https://jiangdg.blog.csdn.net/article/details/104530994">這裡</a>或<a href="https://zhuanlan.zhihu.com/p/83566179">這裏</a>有一些components的介紹可以參考。</p>
+<p>這些components裡面，其中一個比較重要的是詞向量源、model和分詞。Rasa常用的詞向量源與model有MITIE和spaCy，基本上大部分的tutorial都會走著兩個路線。以中文來說，找到的tutorial都是以MITIE+jieba為主，這是由於spaCy當時不支援中文。spaCy去年開始支援中文，因此可以多一個選項。
+至於兩者有什麼差別，簡單來說，如<a href="https://towardsdatascience.com/chatbots-vs-reality-how-to-build-an-efficient-chatbot-with-wise-usage-of-nlp-77f41949bf08">《ChatBots vs Reality: how to build an efficient chatbot, with wise usage of NLP》</a>說，「Mitie and Spacy are very different libraries from each other: the first oneuses more general-purpose language models, and therefore very slow to train, while Spacy uses more task specific models, and is very fast to train.」。更仔細的話，可以參考以下文章：<!-- raw HTML omitted -->
+RASA NLU语言模型：<a href="https://zhuanlan.zhihu.com/p/331853394">https://zhuanlan.zhihu.com/p/331853394</a><!-- raw HTML omitted -->
+Build a Multilingual Chatbot with Rasa and Heroku – Introduction：<a href="https://www.langnerd.com/multilingual-chatbot-with-rasa-and-heroku-part-1/">https://www.langnerd.com/multilingual-chatbot-with-rasa-and-heroku-part-1/</a></p>
+<p>其他關於components可供參考的文章：<!-- raw HTML omitted -->
+Our experience building chatbots with Rasa — Tuning the NLU pipeline：<a href="https://chatbotslife.com/our-experience-building-chatbots-with-rasa-tuning-the-nlu-pipeline-74a80cd565b8">https://chatbotslife.com/our-experience-building-chatbots-with-rasa-tuning-the-nlu-pipeline-74a80cd565b8</a><!-- raw HTML omitted -->
+Rasa简介：<a href="https://zhuanlan.zhihu.com/p/342671832">https://zhuanlan.zhihu.com/p/342671832</a></p>
+<h3 id="installation">Installation:</h3>
+<p>如前述，支援中文的詞向量源與model現在有兩個：MITIE+jieba和spaCy</p>
+<h4 id="若用mitiejieba安裝如下">若用MITIE+jieba安裝如下：</h4>
+<p>安裝rasa：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install git<span style="color:#f92672">+</span>https:<span style="color:#f92672">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>mit<span style="color:#f92672">-</span>nlp<span style="color:#f92672">/</span>MITIE<span style="color:#f92672">.</span>git
+pip install rasa[mitie]
+</code></pre></div><p>安装結巴分詞：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install jieba
+</code></pre></div><p>另外還要準備好中文詞向量模型total_word_feature_extractor_zh.dat（密碼：p4vx）<a href="https://pan.baidu.com/s/1kNENvlHLYWZIddmtWJ7Pdg">https://pan.baidu.com/s/1kNENvlHLYWZIddmtWJ7Pdg</a>，這裡需要將該模型copy到創建的python項目data目錄下（可任意位置），後面訓練NLU模型時會用到。</p>
+<h4 id="若用spacy安裝如下">若用spaCy安裝如下：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install https:<span style="color:#f92672">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>howl<span style="color:#f92672">-</span>anderson<span style="color:#f92672">/</span>Chinese_models_for_SpaCy<span style="color:#f92672">/</span>releases<span style="color:#f92672">/</span>download<span style="color:#f92672">/</span>v2<span style="color:#ae81ff">.0.3</span><span style="color:#f92672">/</span>zh_core_web_sm<span style="color:#f92672">-</span><span style="color:#ae81ff">2.0.3</span><span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>gz
+<span style="color:#f92672">./</span>spacy_model_link<span style="color:#f92672">.</span>bash
+pip install rasa[spacy]
+</code></pre></div><h4 id="或者全部安裝">或者全部安裝：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install rasa[full]
+</code></pre></div><h4 id="安裝rasa-x">安裝rasa X：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install <span style="color:#f92672">--</span>use<span style="color:#f92672">-</span>deprecated<span style="color:#f92672">=</span>legacy<span style="color:#f92672">-</span>resolver rasa<span style="color:#f92672">-</span>x <span style="color:#f92672">--</span>extra<span style="color:#f92672">-</span>index<span style="color:#f92672">-</span>url https:<span style="color:#f92672">//</span>pypi<span style="color:#f92672">.</span>rasa<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>simple
+https:<span style="color:#f92672">//</span>rasa<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>docs<span style="color:#f92672">/</span>rasa<span style="color:#f92672">-</span>x<span style="color:#f92672">/</span>installation<span style="color:#f92672">-</span><span style="color:#f92672">and</span><span style="color:#f92672">-</span>setup<span style="color:#f92672">/</span>install<span style="color:#f92672">/</span>local<span style="color:#f92672">-</span>mode
+</code></pre></div><p>到這裡總算安裝成功。接下來就要啟動和setting。雖然有想寫成個系列教學文，不過實在沒啥力氣，所以還是別期望太高了。</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://herboratory.github.io/engineering-department/zh-hk/tags/rasa/">rasa</a></span>
+        <span class="tag"><a href="https://herboratory.github.io/engineering-department/zh-hk/tags/chatbot/">chatbot</a></span>
+        
+    </p>
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://herboratory.github.io/engineering-department/zh-hk/categories/python/">python</a></span>
+        <span class="tag"><a href="https://herboratory.github.io/engineering-department/zh-hk/categories/tutorial/">tutorial</a></span>
+        
+    </p>
+
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        149字
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-06-17 08:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d&amp;caption=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d&amp;canonicalUrl=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d&amp;body=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f&amp;media=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f;description=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f&amp;title=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d&amp;summary=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d&amp;source=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f&amp;resubmit=true&amp;title=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f;title=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d%20https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f&amp;t=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Rasa%e6%90%97%e9%bc%93%e7%ad%86%e8%a8%98%20-%20%e5%ae%89%e8%a3%9d&amp;url=https%3a%2f%2fherboratory.github.io%2fengineering-department%2fzh-hk%2fposts%2f2021%2f06%2frasa%25E6%2590%2597%25E9%25BC%2593%25E7%25AD%2586%25E8%25A8%2598-%25E5%25AE%2589%25E8%25A3%259D%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+    <div class="pagination">
+        <div class="pagination__title">
+            <span class="pagination__title-h"></span>
+            <hr />
+        </div>
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://herboratory.github.io/engineering-department/zh-hk/posts/2021/07/%E5%88%A9%E7%94%A8python%E5%BB%BA%E7%AB%8Btext-to-speech%E7%9A%84browser-web-app/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">利用Python建立text-to-speech的browser web app</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%A6%82%E4%BD%95%E5%9C%A8telegram%E5%88%A9%E7%94%A8python-telegram-bot%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%B8%AD%E9%86%AB%E7%B6%93%E5%85%B8%E5%8F%A4%E7%B1%8D%E7%B4%A0%E5%95%8F%E6%90%9C%E5%B0%8Bchatbot/">
+                    <span class="button__text">如何在Telegram利用python-telegram-bot建立一個中醫經典古籍《素問》搜尋chatbot</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://herboratory.github.io/engineering-department">工程部｜Engineering Department</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://herboratory.github.io/engineering-department/zh-hk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/herboratory">扶疏堂研究所｜Herboratory</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://herboratory.github.io/engineering-department/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>

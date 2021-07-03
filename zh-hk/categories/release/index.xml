@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>release on 工程部</title>
+    <link>https://herboratory.github.io/engineering-department/zh-hk/categories/release/</link>
+    <description>Recent content in release on 工程部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/zh-hk/categories/release/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>徐長卿君🤖️Chatbot 發布</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%BE%90%E9%95%B7%E5%8D%BF%E5%90%9B%EF%B8%8Fchatbot-%E7%99%BC%E5%B8%83/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%BE%90%E9%95%B7%E5%8D%BF%E5%90%9B%EF%B8%8Fchatbot-%E7%99%BC%E5%B8%83/</guid>
+      <description>專案資料： 徐長卿君🤖️是一個是一個教學用的中醫搜尋chatbot，除了作為中醫經典古籍搜尋，另外最大目的是讓想要利用python-telegram-bot的Python套件建立Telegram chatbot的新手有個最新的tutorial可供參考。
+現提供以下經典古籍搜尋：《黃帝內經素問》（中、英文版）、《傷寒論》、《神農本草經》及《難經》 搜尋功能方面，《黃帝內經素問》及《傷寒論》能以關鍵字搜尋相關內容。《神農本草經》能以藥名或功能，配合自定義搜尋關鍵字搜尋。《難經》則能根據難號或關鍵字，配合自定義搜尋關鍵字搜尋。
+教學部份，tutorial已經發佈：https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/如何在telegram利用python-telegram-bot建立一個中醫經典古籍素問搜尋chatbot//
+本專案免費使用，只需要在Telegram加入@cynanchum_bot後即可開始使用。</description>
+    </item>
+    
+    <item>
+      <title>Scraparazzie 發佈</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/scraparazzie-%E7%99%BC%E4%BD%88/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/scraparazzie-%E7%99%BC%E4%BD%88/</guid>
+      <description>專案資料： scraparazzie是一個能利用關鍵字或選擇特定topic搜尋Google News feeds的Python package。
+大概花了四天時間時間做了scraparazzie，一個能搜尋Google News feeds的套件。這個套件是以gnewsclient為框架，進行修改。在原有基礎上增建功能。
+gnewsclient原有功能：  能設定語言、地區、topic和output結果項數； 能顯示新聞圖片連結和影片資料；  scraparazzie所修改功能：  output格式增加發佈日期時間； 除了原有topic搜尋，增加關鍵字搜尋（但只限於topic或關鍵字二選一搜尋，並以關鍵字為優先搜尋項目）； 去除顯示新聞圖片連結和影片資料 搜尋結果從最新到最舊列出； 匯出list功能  當初寫這個套件是因為個人需求，需要一天固定時間搜尋世界各地媒體發新聞標題、發布來源、發佈日期時間等資訊給我再作處理。之前找過不少教學，通常用是用newspaper3k或者自行用beautifulsoup自己寫出來。雖然也有Google News的，但是功能不多，這個套件有什麼特別呢？主要是Python能用的Google News套件不多，github上相關的大概有google-news-scraper、GoogleNews、google_news、gnp和gnewsclient。基本上比較能用、比較符合我的需求只有gnewsclient，但偏偏沒有顯示發佈日期時間功能。本來直接想在package上改來用，後來發現不好改，而且有其他功能想要加進去。把心一橫就把package的框架保留，裡面爬新聞、output新聞部分另外處理。搗鼓了好幾天、撞牆了好幾天，經過一堆大神協助，今天終於進入尾聲。收尾前，看到gnewsclient有人問能否加入搜尋新聞功能，看了下不難，就加入關鍵字搜尋功能。然後就把給打包成package，發出人生第一個python package。（感覺是否應該慶祝一下？畢竟作為個非專業的哎呀碼農&amp;hellip;😬）發出後才想到想要把結果output成list方便後續處理，然後又搗鼓了一下，然後就已經是1.2.4了。
+v1.2.4為相對穩定版本，在更新成v1.2.4過程再測試遇到的情形都有處理，因此出現error的情形應該會減少。若有任何問題，請到Github那邊issue吧。</description>
+    </item>
+    
+  </channel>
+</rss>

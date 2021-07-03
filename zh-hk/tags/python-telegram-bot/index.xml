@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python-telegram-bot on 工程部</title>
+    <link>https://herboratory.github.io/engineering-department/zh-hk/tags/python-telegram-bot/</link>
+    <description>Recent content in python-telegram-bot on 工程部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/zh-hk/tags/python-telegram-bot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在Telegram利用python-telegram-bot建立一個中醫經典古籍《素問》搜尋chatbot</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%A6%82%E4%BD%95%E5%9C%A8telegram%E5%88%A9%E7%94%A8python-telegram-bot%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%B8%AD%E9%86%AB%E7%B6%93%E5%85%B8%E5%8F%A4%E7%B1%8D%E7%B4%A0%E5%95%8F%E6%90%9C%E5%B0%8Bchatbot/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%A6%82%E4%BD%95%E5%9C%A8telegram%E5%88%A9%E7%94%A8python-telegram-bot%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%B8%AD%E9%86%AB%E7%B6%93%E5%85%B8%E5%8F%A4%E7%B1%8D%E7%B4%A0%E5%95%8F%E6%90%9C%E5%B0%8Bchatbot/</guid>
+      <description>【前言】 Telegram最近在香港和台灣開始比較為人所知而使用。一方面是相對比較安全，而且有group chat、channel等功能；另一方面是，比起LINE，Telgram的chatbot的限制沒這麼多，而且是免費！免費！免費！（這是重點之重🤫）對於開發budget非常不多的人來說，Telegram是一個不錯的選項。
+用Python寫Telegram chatbot最大的好處是有現成的package可用，例如python-telegram-bot和pyTelegram，當然也能透過Flask、requests自行搗鼓出來。以套件來說，tutorial方面，不管是中、英文，套件以python-telegram-bot比較多，而且有專屬自己的、在Telegram討論group發問（不過感覺有時候不太friendly就是，而且問的人很多，有時候一不小心有人回答了對話也飄走了）；pyTelegram則在YouTube教學比較多。經過評估，最後決定用python-telegram-bot的套件。
+寫完這個chatbot的tutorial，暫時不會再隨意寫程式，因為想要回歸中醫本行去開發別的東西，而且想要去乖乖上課improve CS知識方便之後寫web app。寫這篇收山之作，是因為之前寫算盤子君🤖️（@glochidion_bot，大概暫時是唯一一個尋找和查詢有招收香港學生的台灣的大學系所和老師專長資料的Telegram chatbot）困難重重，一是不少python-telegram-bot的tutorial已經過期，二是碰壁試過撞牆多次後才求救叫天不應叫地不聞，有人聞了卻一句戳說是伸手黨，之前撞牆本來就煩躁，加上一個「伸手黨」把自己曾經努力過被抹殺，煩躁就如星火燎原那般燃燒起來，更TM的不爽了。既然如此，就決定再寫一個Telegram chatbot，專門給新手入門和伸手黨使用🤓，讓撞牆撞到了無生趣、非專業背景但想要入門的同好有個好開端。這個《素問》搜尋🔍chatbot是節取自徐長卿君🤖️（@cynanchum_bot，大概算是首個中醫經典古籍搜尋chatbot，除了《素問》，還有《傷寒論》、《神農本草經》和《難經》）的《素問》搜尋部分。沒有中醫背景的人沒關係，就當作是設計一個搜尋機器人去看就好，因為框架都差不多。
+至於看完這個tutorial會學到啥？
+ 如何從零開始設計chatbot - 從寫之前要注意的到寫程式到放到Google Cloud Platform的Compute Engine上跑 如何用python-telegram-bot寫chatbot - 除了一般對話對應，還有如何加入inline keyboard（inline keyboard讓我撞牆很久簡直是崩潰邊緣，這部分簡直是血書&amp;hellip;因為python-telegram-bot的demo寫的很莫名其妙根本不知道想要表達啥，其他tutorial要不過期要不就不work）  【開始寫之前 - 注意事項】 在開始實際寫之前，先說下一個Telegram chatbot設計需要注意的事項。
+首先，Telegram的chatbot default是不能主動跟user有任何動作，即使曾經使用過也不行🙅‍♂️。
+對於首次使用某個chatbot的user，第一個command給chatbot就是/start，這是每個bot設計的時候非常強烈建議要有（我沒試過設計沒有/start的，所以也不知道後果會怎樣，推測可能chatbot會不理你吧）。之後可以直接用其他command去跟chatbot溝通，也可以繼續用/start。
+其次，根據個人需求，可以設計/help幫助指引user如何使用chatbot。這個設計對於使用有多功能的chatbot來說很重要。就如第一次去有目的的逛大的shopping mall，為了省事方便，都會找顧客服務中心問，同樣道理。
+第三，非常強烈建議設計chatbot時要規範使用範圍。這是啥意思呢？意思是當用戶輸入一些用途以外的字眼，chatbot不會愣在哪不回應或甚至直接down機（user很會把機器玩壞滴～），而是有feedback給user，例如說“挖垮薄吼請重新輸入”之類的。
+第四，在程式部分要有error log，這是方便開發時出現error會有指引告訴你哪裡出問題，不管是自己debug還是找別人求救時有個方向。
+第五，建議開始動手寫chatbot之前先想好、設計好chatbot的流程。例如會想要chatbot做啥、達到「做啥」這個目的需要有什麼步驟和需要啥部件；仔細一點的話，可以順便想對話內容，例如想chatbot的語氣、回應方式之類的。
+接下來會根據接下來要寫的《素問》搜尋chatbot，寫一個chatbot設計流程。
+【開始寫之前 - 寫設計流程】 在開始寫chatbot之前先寫設計流程，除了可以幫助釐清自己的想法，也可以更清楚看到整體架構，從而看到整體架構有否缺陷。同時會更清楚自己寫的時候在寫什麼，不會出現東寫一塊、西加一塊。以下就開始寫個《素問》搜尋🔍chatbot的設計流程吧！
+[設計流程]
+這個chatbot可以幹嘛：讓user input keyword搜尋《素問》內容句子。
+開發環境：Python 3.7
+使用套件：python-telegram-bot
+特別點：python-telegram-bot中，一個command和非command功能會以一個def對應一個dispatcher的方式才能運作
+檔案架構： # 建議使用虛擬環境venv，獨立開個folder儲存運行。以下也會預設在獨立folder的venv進行。若不知道如何設置虛擬環境，可參考這裡。
+ 主程式：cynanchum_bot.py 存放搜尋用資料的資料夾：data #資料以JSON形式儲存  程式架構：
+ 需要import的package 允許logging用以紀錄錯誤時哪裏出問題 Telegram chatbot的基礎設定，如token、bot、updater （這部分會建議大家用package之前看看demo） 指令/start：用來給user首次啟動chatbot 指令/about：解釋這個bot的背景，順便給herboratory打打廣告 指令/help：指引用戶如何使用chatbot 指令/suwen：搜尋《素問》的程式部分 getClickButtonData：在/about用到inline keyboard，而inline keyboard在user按下按鈕後，chatbot會根據inline keyboard的指令給予相對應的feedback。回應的setting就在這裡 reply_handler：只要輸入非指令的字眼都會跑這部分回應user error_handler：出現error會跑這部分回應user error：用來顯示error log。error_handler是對user回應；error是給開發者知道出啥問題 main：所有def的dispatcher會放到這裡。python-telegram-bot的chatbot啟動待機的部分也會放到這裡。 運行main  【以上】</description>
+    </item>
+    
+  </channel>
+</rss>

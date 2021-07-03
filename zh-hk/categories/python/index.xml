@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 工程部</title>
+    <link>https://herboratory.github.io/engineering-department/zh-hk/categories/python/</link>
+    <description>Recent content in python on 工程部</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://herboratory.github.io/engineering-department/zh-hk/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用Python建立text-to-speech的browser web app</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2021/07/%E5%88%A9%E7%94%A8python%E5%BB%BA%E7%AB%8Btext-to-speech%E7%9A%84browser-web-app/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2021/07/%E5%88%A9%E7%94%A8python%E5%BB%BA%E7%AB%8Btext-to-speech%E7%9A%84browser-web-app/</guid>
+      <description>【這個程式的緣起】 之前父親節，很多人都會費盡心思準備父親節禮物，當然我也不例外。可是我是窮L，也不知道該買啥 - 老父是個學習宅，以前連我老母也是個宅 - 我肯定是他們親生的，因為我也是個宅。碰巧最近老父又迷上學習語言，而之前我因為上剪片workshop要繳交作業，為了不出鏡不出聲，於是用Python寫了個利用Google的text-to-speech（TTS）服務的程式把講稿generate成MP3，我爸就對這個程式很有興趣。但是因為是一堆code，估計也有點嚇怕了他。於是趁著父親節，就把這個程式加工，用django搭建個web app，讓老爸可以按一按就能有個MP3檔案。雖然之前跟著Mozilla的tutorial做了個個人圖書管理程式，但對django還是不算熟悉，因此建立這個TTS app也經歷不少鬼打牆的時光。所以一邊做一邊記錄在案，下面的內容就是做的時候的筆記。
+不囉嗦！開動唄！
+【環境】 OS：MacOS Big Sur 11.0.1 環境：Python 3.7
+【部署虛擬環境】 project獨立開個虛擬環境來做，方便管理雜七雜八的packages。首先先自己找個自己爽的地方弄個folder將之後的東西集中處理，然後在Terminal輸入以下的code：
+python3 -m venv playground source playground/bin/activate pip install --upgrade pip 【安裝需要的packages】 接下來安裝需要的packages
+pip install django pip install --upgrade google-cloud-texttospeech # Google的text-to-speech服務的Python package 【建立project】 安裝需要的package後，就開始利用django建立project：
+django-admin startproject tts_converter 【setting.py調整】 打開tts_converter/tts_converter/settings.py。
+1. 配置資料庫 Django default用SQLite。在這個項目裡，基本上不太會需要用到很多存取行為，頂多就是有session，因此我們也使用SQLite。所以在這裏不需要額外的配置工作。若想要用其他的database，可參考這裏
+DATABASES = { &amp;#39;default&amp;#39;: { &amp;#39;ENGINE&amp;#39;: &amp;#39;django.db.backends.sqlite3&amp;#39;, &amp;#39;NAME&amp;#39;: os.path.join(BASE_DIR, &amp;#39;db.sqlite3&amp;#39;), } } 2. 其他設置 LANGUAGE_CODE = &amp;#39;en-gb&amp;#39; # 語言 TIME_ZONE = &amp;#39;Asia/Hong_Kong&amp;#39; # 時區 3.</description>
+    </item>
+    
+    <item>
+      <title>Rasa搗鼓筆記 - 安裝</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2021/06/rasa%E6%90%97%E9%BC%93%E7%AD%86%E8%A8%98-%E5%AE%89%E8%A3%9D/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2021/06/rasa%E6%90%97%E9%BC%93%E7%AD%86%E8%A8%98-%E5%AE%89%E8%A3%9D/</guid>
+      <description>好幾年前&amp;hellip;大概是前年吧，想要做智能一點的chatbot，用過chatterbot效果不算好；想要用Rasa，大概太老了連安裝都安裝不了，搞了好幾天最後放棄了。由於最近還是皮癢加上個人健康需求還是想要做個比較聰明點的chatbot，最後還是忍不住想要再搗鼓Rasa。因此就試看看唄。經過一天收集閱讀消化資料，找了一堆tutorials，以中文為語言的的基本上內容離不開哪些，看完還是覺得知識和操作很零碎，也不想只是純粹跟tutorial去做，因此稍微找了些資料才去試著安裝，這次終於成功了。下面的步驟是經過測試OK的。
+開始講安裝前，快速飄過介紹下Rasa唄。
+Rasa是一個open source的machine learning框架，用於構建上下文AI assistant和chatbot。Rasa有兩個主要模塊：NLU：實現意圖識別和槽值提取，它把用戶的輸入轉換為結構化數據Core：是一個對話管理平台，用於預測、決定下一步做什麼
+還有一個是Rasa X。Rasa X是一個可幫助構建、改進和部署由Rasa框架提供支持的AI assistants的工具。
+【安裝流程】 Environment: 建議Python 3.6 - 3.8之間，不support 3.9，尤其打算使用Rasa X。安裝時我用Python 3.7，OS環境是MacOS Big Sur 11.0.1。
+Virtual Environment Setting: python3 -m venv whatever-name Upgrade Package: pip install --upgrade pip Before Installing: 在Rasa NLU模塊中，提供了一種名為Pipline(管道)配置方式，傳入的消息(Message)通過管道(Pipline)中一系列組件(Component)處理後得到最終的模型。
+上圖參考自Rasa。
+管道由多個組件構成，每個組件有各自的功能，比如實體提取、意圖分類、響應選擇、預處理等，這些組件在管道中一個接著一個的執行，每個組件處理輸入並創建輸出，並且輸出可以被該組件之後管道中任何組件使用。當然，有些組件只生成管道中其他組件使用的信息，有些組件生成Output屬性，這些Output屬性將在處理完成後返回。因此選擇components要根據目標需求而定。這裡或這裏有一些components的介紹可以參考。
+這些components裡面，其中一個比較重要的是詞向量源、model和分詞。Rasa常用的詞向量源與model有MITIE和spaCy，基本上大部分的tutorial都會走著兩個路線。以中文來說，找到的tutorial都是以MITIE+jieba為主，這是由於spaCy當時不支援中文。spaCy去年開始支援中文，因此可以多一個選項。 至於兩者有什麼差別，簡單來說，如《ChatBots vs Reality: how to build an efficient chatbot, with wise usage of NLP》說，「Mitie and Spacy are very different libraries from each other: the first oneuses more general-purpose language models, and therefore very slow to train, while Spacy uses more task specific models, and is very fast to train.</description>
+    </item>
+    
+    <item>
+      <title>如何在Telegram利用python-telegram-bot建立一個中醫經典古籍《素問》搜尋chatbot</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%A6%82%E4%BD%95%E5%9C%A8telegram%E5%88%A9%E7%94%A8python-telegram-bot%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%B8%AD%E9%86%AB%E7%B6%93%E5%85%B8%E5%8F%A4%E7%B1%8D%E7%B4%A0%E5%95%8F%E6%90%9C%E5%B0%8Bchatbot/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%A6%82%E4%BD%95%E5%9C%A8telegram%E5%88%A9%E7%94%A8python-telegram-bot%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%B8%AD%E9%86%AB%E7%B6%93%E5%85%B8%E5%8F%A4%E7%B1%8D%E7%B4%A0%E5%95%8F%E6%90%9C%E5%B0%8Bchatbot/</guid>
+      <description>【前言】 Telegram最近在香港和台灣開始比較為人所知而使用。一方面是相對比較安全，而且有group chat、channel等功能；另一方面是，比起LINE，Telgram的chatbot的限制沒這麼多，而且是免費！免費！免費！（這是重點之重🤫）對於開發budget非常不多的人來說，Telegram是一個不錯的選項。
+用Python寫Telegram chatbot最大的好處是有現成的package可用，例如python-telegram-bot和pyTelegram，當然也能透過Flask、requests自行搗鼓出來。以套件來說，tutorial方面，不管是中、英文，套件以python-telegram-bot比較多，而且有專屬自己的、在Telegram討論group發問（不過感覺有時候不太friendly就是，而且問的人很多，有時候一不小心有人回答了對話也飄走了）；pyTelegram則在YouTube教學比較多。經過評估，最後決定用python-telegram-bot的套件。
+寫完這個chatbot的tutorial，暫時不會再隨意寫程式，因為想要回歸中醫本行去開發別的東西，而且想要去乖乖上課improve CS知識方便之後寫web app。寫這篇收山之作，是因為之前寫算盤子君🤖️（@glochidion_bot，大概暫時是唯一一個尋找和查詢有招收香港學生的台灣的大學系所和老師專長資料的Telegram chatbot）困難重重，一是不少python-telegram-bot的tutorial已經過期，二是碰壁試過撞牆多次後才求救叫天不應叫地不聞，有人聞了卻一句戳說是伸手黨，之前撞牆本來就煩躁，加上一個「伸手黨」把自己曾經努力過被抹殺，煩躁就如星火燎原那般燃燒起來，更TM的不爽了。既然如此，就決定再寫一個Telegram chatbot，專門給新手入門和伸手黨使用🤓，讓撞牆撞到了無生趣、非專業背景但想要入門的同好有個好開端。這個《素問》搜尋🔍chatbot是節取自徐長卿君🤖️（@cynanchum_bot，大概算是首個中醫經典古籍搜尋chatbot，除了《素問》，還有《傷寒論》、《神農本草經》和《難經》）的《素問》搜尋部分。沒有中醫背景的人沒關係，就當作是設計一個搜尋機器人去看就好，因為框架都差不多。
+至於看完這個tutorial會學到啥？
+ 如何從零開始設計chatbot - 從寫之前要注意的到寫程式到放到Google Cloud Platform的Compute Engine上跑 如何用python-telegram-bot寫chatbot - 除了一般對話對應，還有如何加入inline keyboard（inline keyboard讓我撞牆很久簡直是崩潰邊緣，這部分簡直是血書&amp;hellip;因為python-telegram-bot的demo寫的很莫名其妙根本不知道想要表達啥，其他tutorial要不過期要不就不work）  【開始寫之前 - 注意事項】 在開始實際寫之前，先說下一個Telegram chatbot設計需要注意的事項。
+首先，Telegram的chatbot default是不能主動跟user有任何動作，即使曾經使用過也不行🙅‍♂️。
+對於首次使用某個chatbot的user，第一個command給chatbot就是/start，這是每個bot設計的時候非常強烈建議要有（我沒試過設計沒有/start的，所以也不知道後果會怎樣，推測可能chatbot會不理你吧）。之後可以直接用其他command去跟chatbot溝通，也可以繼續用/start。
+其次，根據個人需求，可以設計/help幫助指引user如何使用chatbot。這個設計對於使用有多功能的chatbot來說很重要。就如第一次去有目的的逛大的shopping mall，為了省事方便，都會找顧客服務中心問，同樣道理。
+第三，非常強烈建議設計chatbot時要規範使用範圍。這是啥意思呢？意思是當用戶輸入一些用途以外的字眼，chatbot不會愣在哪不回應或甚至直接down機（user很會把機器玩壞滴～），而是有feedback給user，例如說“挖垮薄吼請重新輸入”之類的。
+第四，在程式部分要有error log，這是方便開發時出現error會有指引告訴你哪裡出問題，不管是自己debug還是找別人求救時有個方向。
+第五，建議開始動手寫chatbot之前先想好、設計好chatbot的流程。例如會想要chatbot做啥、達到「做啥」這個目的需要有什麼步驟和需要啥部件；仔細一點的話，可以順便想對話內容，例如想chatbot的語氣、回應方式之類的。
+接下來會根據接下來要寫的《素問》搜尋chatbot，寫一個chatbot設計流程。
+【開始寫之前 - 寫設計流程】 在開始寫chatbot之前先寫設計流程，除了可以幫助釐清自己的想法，也可以更清楚看到整體架構，從而看到整體架構有否缺陷。同時會更清楚自己寫的時候在寫什麼，不會出現東寫一塊、西加一塊。以下就開始寫個《素問》搜尋🔍chatbot的設計流程吧！
+[設計流程]
+這個chatbot可以幹嘛：讓user input keyword搜尋《素問》內容句子。
+開發環境：Python 3.7
+使用套件：python-telegram-bot
+特別點：python-telegram-bot中，一個command和非command功能會以一個def對應一個dispatcher的方式才能運作
+檔案架構： # 建議使用虛擬環境venv，獨立開個folder儲存運行。以下也會預設在獨立folder的venv進行。若不知道如何設置虛擬環境，可參考這裡。
+ 主程式：cynanchum_bot.py 存放搜尋用資料的資料夾：data #資料以JSON形式儲存  程式架構：
+ 需要import的package 允許logging用以紀錄錯誤時哪裏出問題 Telegram chatbot的基礎設定，如token、bot、updater （這部分會建議大家用package之前看看demo） 指令/start：用來給user首次啟動chatbot 指令/about：解釋這個bot的背景，順便給herboratory打打廣告 指令/help：指引用戶如何使用chatbot 指令/suwen：搜尋《素問》的程式部分 getClickButtonData：在/about用到inline keyboard，而inline keyboard在user按下按鈕後，chatbot會根據inline keyboard的指令給予相對應的feedback。回應的setting就在這裡 reply_handler：只要輸入非指令的字眼都會跑這部分回應user error_handler：出現error會跑這部分回應user error：用來顯示error log。error_handler是對user回應；error是給開發者知道出啥問題 main：所有def的dispatcher會放到這裡。python-telegram-bot的chatbot啟動待機的部分也會放到這裡。 運行main  【以上】</description>
+    </item>
+    
+    <item>
+      <title>徐長卿君🤖️Chatbot 發布</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%BE%90%E9%95%B7%E5%8D%BF%E5%90%9B%EF%B8%8Fchatbot-%E7%99%BC%E5%B8%83/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/%E5%BE%90%E9%95%B7%E5%8D%BF%E5%90%9B%EF%B8%8Fchatbot-%E7%99%BC%E5%B8%83/</guid>
+      <description>專案資料： 徐長卿君🤖️是一個是一個教學用的中醫搜尋chatbot，除了作為中醫經典古籍搜尋，另外最大目的是讓想要利用python-telegram-bot的Python套件建立Telegram chatbot的新手有個最新的tutorial可供參考。
+現提供以下經典古籍搜尋：《黃帝內經素問》（中、英文版）、《傷寒論》、《神農本草經》及《難經》 搜尋功能方面，《黃帝內經素問》及《傷寒論》能以關鍵字搜尋相關內容。《神農本草經》能以藥名或功能，配合自定義搜尋關鍵字搜尋。《難經》則能根據難號或關鍵字，配合自定義搜尋關鍵字搜尋。
+教學部份，tutorial已經發佈：https://herboratory.github.io/engineering-department/zh-hk/posts/2020/07/如何在telegram利用python-telegram-bot建立一個中醫經典古籍素問搜尋chatbot//
+本專案免費使用，只需要在Telegram加入@cynanchum_bot後即可開始使用。</description>
+    </item>
+    
+    <item>
+      <title>在Python使用scraparazzie尋找新聞並透過LINE Notify發送</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/%E5%9C%A8python%E4%BD%BF%E7%94%A8scraparazzie%E5%B0%8B%E6%89%BE%E6%96%B0%E8%81%9E%E4%B8%A6%E9%80%8F%E9%81%8Eline-notify%E7%99%BC%E9%80%81/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/%E5%9C%A8python%E4%BD%BF%E7%94%A8scraparazzie%E5%B0%8B%E6%89%BE%E6%96%B0%E8%81%9E%E4%B8%A6%E9%80%8F%E9%81%8Eline-notify%E7%99%BC%E9%80%81/</guid>
+      <description>當初做scraparazzie這個套件的目的，是希望可以抓自己有興趣的topic和keywords的新聞傳送到某個IM的bot，就能根據之後自己再設定隨時看到新聞，方便自己炒股和追蹤農業災害新聞（啊&amp;hellip;因為想要炒commodity嘛🤫）。但我並不需要內文，只需要標題、新聞來源和發布時間就好，有興趣再click連結去看。偶然看到LINE Notify的教學，就拿來實作一下吧。
+開發環境：Python 3.7
+另外也需要LINE Notify的權杖，因此會需要有LINE帳號。接下來先step-by-step介紹申請LINE Notify權杖的部分。
+STEP 1:  至 https://notify-bot.line.me/zh_TW/ 進行登入 點選右上方 帳號名稱選單中的「個人頁面」（My page）   點選【發行權杖】（Generate token）   輸入自訂「權杖名稱」, 這邊設定的名稱會在出現在提醒訊息的Title 選擇第一個【透過1對1聊天接受LINE Notify的通知】（1-on-1 chat with LINE Notify） ，然後按下「發行」（Generate token）  按下「發行」後，就會顯示權杖。請將權杖內容「複製」並記下來！程式與LINE Notify溝通就是靠這個權杖！
+LINE Notify設定的部分大概到這裡結束。
+STEP 2:  建立 lineNotifyMessage.py 檔案 在token部分，記得將剛剛在LINE Notify記下的權杖貼上去  from scraparazzie import scraparazzie import requests import time from random import randrange # LINE Notify的部分｜LINE Notify setting token = &amp;#34;paste_your_token_here&amp;#34; # 從LINE Notify獲得的權杖｜Token from LINE Notify def lineNotifyMessage(token, msg): # LINE Notify傳訊息的設定｜Message sending setting of LINE Notify headers = { &amp;#34;Authorization&amp;#34;: &amp;#34;Bearer &amp;#34; + token, &amp;#34;Content-Type&amp;#34; : &amp;#34;application/x-www-form-urlencoded&amp;#34; } payload = {&amp;#39;message&amp;#39;: msg} r = requests.</description>
+    </item>
+    
+    <item>
+      <title>Scraparazzie 發佈</title>
+      <link>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/scraparazzie-%E7%99%BC%E4%BD%88/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://herboratory.github.io/engineering-department/zh-hk/posts/2020/04/scraparazzie-%E7%99%BC%E4%BD%88/</guid>
+      <description>專案資料： scraparazzie是一個能利用關鍵字或選擇特定topic搜尋Google News feeds的Python package。
+大概花了四天時間時間做了scraparazzie，一個能搜尋Google News feeds的套件。這個套件是以gnewsclient為框架，進行修改。在原有基礎上增建功能。
+gnewsclient原有功能：  能設定語言、地區、topic和output結果項數； 能顯示新聞圖片連結和影片資料；  scraparazzie所修改功能：  output格式增加發佈日期時間； 除了原有topic搜尋，增加關鍵字搜尋（但只限於topic或關鍵字二選一搜尋，並以關鍵字為優先搜尋項目）； 去除顯示新聞圖片連結和影片資料 搜尋結果從最新到最舊列出； 匯出list功能  當初寫這個套件是因為個人需求，需要一天固定時間搜尋世界各地媒體發新聞標題、發布來源、發佈日期時間等資訊給我再作處理。之前找過不少教學，通常用是用newspaper3k或者自行用beautifulsoup自己寫出來。雖然也有Google News的，但是功能不多，這個套件有什麼特別呢？主要是Python能用的Google News套件不多，github上相關的大概有google-news-scraper、GoogleNews、google_news、gnp和gnewsclient。基本上比較能用、比較符合我的需求只有gnewsclient，但偏偏沒有顯示發佈日期時間功能。本來直接想在package上改來用，後來發現不好改，而且有其他功能想要加進去。把心一橫就把package的框架保留，裡面爬新聞、output新聞部分另外處理。搗鼓了好幾天、撞牆了好幾天，經過一堆大神協助，今天終於進入尾聲。收尾前，看到gnewsclient有人問能否加入搜尋新聞功能，看了下不難，就加入關鍵字搜尋功能。然後就把給打包成package，發出人生第一個python package。（感覺是否應該慶祝一下？畢竟作為個非專業的哎呀碼農&amp;hellip;😬）發出後才想到想要把結果output成list方便後續處理，然後又搗鼓了一下，然後就已經是1.2.4了。
+v1.2.4為相對穩定版本，在更新成v1.2.4過程再測試遇到的情形都有處理，因此出現error的情形應該會減少。若有任何問題，請到Github那邊issue吧。</description>
+    </item>
+    
+  </channel>
+</rss>

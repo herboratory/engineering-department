@@ -1,0 +1,148 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Department of Engineering</title>
+        <link>https://herboratory.github.io/engineering-department/en/posts/</link>
+        <description>Recent content in Posts on Department of Engineering</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://herboratory.github.io/engineering-department/en/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Release of Cynanchun kun🤖️ Search-bot</title>
+            <link>https://herboratory.github.io/engineering-department/en/posts/2020/07/release-of-cynanchun-kun%EF%B8%8F-search-bot/</link>
+            <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://herboratory.github.io/engineering-department/en/posts/2020/07/release-of-cynanchun-kun%EF%B8%8F-search-bot/</guid>
+            <description>Project Information: Cynanchum kun🤖️ is a tutorial-based classics searching chatbot. Except its function as TCM classics searching, another main purpose is to write a latest tutorial with python-telegram-bot to build a Telegram chat bot.
+At the moment, available classics includes: Inner Canon of the Yellow Emperor - Basic Questions (《黃帝內經素問》) (in English or Chinese), Treatise on Cold Damage Diseases（《傷寒論》）(in Chinese), Shennong’s Classic of Materia Medica（《神農本草經》）(in Chinese) and Classic of Difficult Issues（《難經》）(in Chinese).</description>
+            <content type="html"><![CDATA[<h4 id="project-information">Project Information:</h4>
+<p>Cynanchum kun🤖️ is a tutorial-based classics searching chatbot. Except its function as TCM classics searching, another main purpose is to write a latest tutorial with python-telegram-bot to build a Telegram chat bot.</p>
+<p>At the moment, available classics includes: Inner Canon of the Yellow Emperor - Basic Questions (《黃帝內經素問》) (in English or Chinese), Treatise on Cold Damage Diseases（《傷寒論》）(in Chinese), Shennong’s Classic of Materia Medica（《神農本草經》）(in Chinese) and Classic of Difficult Issues（《難經》）(in Chinese).</p>
+<p>The tutorial has been publish at the Herboratory blog (in Chinese): <a href="https://herboratory.ai/telegram-chatbot-tutorial/">https://herboratory.ai/telegram-chatbot-tutorial/</a></p>
+<p>This project is free to use, just open the Telegram then add @cynanchum_bot and it&rsquo;s ready to use.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Using scraparazzie to search news and send through LINE Notify in Python</title>
+            <link>https://herboratory.github.io/engineering-department/en/posts/2020/04/using-scraparazzie-to-search-news-and-send-through-line-notify-in-python/</link>
+            <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://herboratory.github.io/engineering-department/en/posts/2020/04/using-scraparazzie-to-search-news-and-send-through-line-notify-in-python/</guid>
+            <description>When the idea came up to make the package scraparazzie, the main purpose is to grab news by topics and keywords. Since I don&amp;rsquo;t really need the news content but title, source and publish date, so that I can receive news with further setting and send the results to an IM bot. That&amp;rsquo;s why I made scraprazzie. And, yes, mainly for stock market and agriculture news (eh&amp;hellip;target in commodities🤫) Somehow I found a tutorial about application in LINE Notify, so let&amp;rsquo;s do it!</description>
+            <content type="html"><![CDATA[<p>When the idea came up to make the package <a href="https://herboratory.github.io/engineering-department/en/posts/2020/04/scraparazzie-release/">scraparazzie</a>, the main purpose is to grab news by topics and keywords. Since I don&rsquo;t really need the news content but title, source and publish date, so that I can receive news with further setting and send the results to an IM bot. That&rsquo;s why I made scraprazzie. And, yes, mainly for stock market and agriculture news (eh&hellip;target in commodities🤫) Somehow I found a <a href="https://bustlec.github.io/note/2018/07/10/line-notify-using-python/">tutorial</a> about application in LINE Notify, so let&rsquo;s do it!</p>
+<p><strong>Environment: Python 3.7</strong></p>
+<p>We also need to get the token of LINE Notify, so we need a LINE account and app. Below we will go step-by-step to apply the LINE Notify token.</p>
+<h3 id="step-1">STEP 1:</h3>
+<ul>
+<li>head to <a href="https://notify-bot.line.me/">https://notify-bot.line.me/</a> and login</li>
+<li>Click the arrow next to you name at top right &gt; My page</li>
+</ul>
+<p><img src="/images/Screenshot-2020-04-18-at-11.08.42-1024x597.png" alt=""></p>
+<p><img src="/images/Screenshot-2020-04-18-at-11.10.52-1-1024x590.png" alt=""></p>
+<ul>
+<li>Click 【Generate token】</li>
+</ul>
+<p><img src="/images/Screenshot-2020-04-18-at-11.11.40-1024x593.png" alt=""></p>
+<ul>
+<li>Input your token name, this will show at as your notification title.</li>
+<li>Select the first one【1-on-1 chat with LINE Notify】, then click 【Generate token】.</li>
+</ul>
+<p><img src="/images/Screenshot-2020-04-18-at-11.14.03-1024x593.png" alt=""></p>
+<p>After clicking 【Generate token】, the token will show. <strong>Please copy and keep the token</strong>! The program need to use this token to communicate with LINE Notify!</p>
+<p><img src="/images/Screenshot-2020-04-18-at-11.15.33-1024x593.png" alt=""></p>
+<p>Setting of LINE Notify is done here.</p>
+<h3 id="step-2">STEP 2:</h3>
+<ul>
+<li>Build the lineNotifyMessage.py</li>
+<li>At the &ldquo;token&rdquo;, please paste the token you just got from LINE Notify.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scraparazzie <span style="color:#f92672">import</span> scraparazzie
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> randrange
+
+<span style="color:#75715e"># LINE Notify的部分｜LINE Notify setting</span>
+
+token <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;paste_your_token_here&#34;</span>    <span style="color:#75715e"># 從LINE Notify獲得的權杖｜Token from LINE Notify</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lineNotifyMessage</span>(token, msg):    <span style="color:#75715e"># LINE Notify傳訊息的設定｜Message sending setting of LINE Notify</span>
+    headers <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#34;Authorization&#34;</span>: <span style="color:#e6db74">&#34;Bearer &#34;</span> <span style="color:#f92672">+</span> token, 
+        <span style="color:#e6db74">&#34;Content-Type&#34;</span> : <span style="color:#e6db74">&#34;application/x-www-form-urlencoded&#34;</span>
+    }
+
+    payload <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;message&#39;</span>: msg}
+    r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;https://notify-api.line.me/api/notify&#34;</span>, headers <span style="color:#f92672">=</span> headers, params <span style="color:#f92672">=</span> payload)
+    <span style="color:#66d9ef">return</span> r<span style="color:#f92672">.</span>status_code
+</code></pre></div><h1 id="setting-the-items-or-message-you-want-to-send">Setting the items or message you want to send</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">keywords <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;locust infest plague&#34;</span>, <span style="color:#e6db74">&#34;Chinese medicine&#34;</span>]
+locations <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Canada&#34;</span>]
+chooen_language <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;English&#34;</span>]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">searching_topic</span>(locations, keywords, languages):
+    <span style="color:#66d9ef">for</span> location <span style="color:#f92672">in</span> locations:
+        location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(location)
+        <span style="color:#66d9ef">for</span> topic <span style="color:#f92672">in</span> keywords:
+            items <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(topic)
+            <span style="color:#66d9ef">for</span> language <span style="color:#f92672">in</span> languages:
+                language <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(language)
+                print(<span style="color:#e6db74">&#34;Items in progress: &#34;</span> <span style="color:#f92672">+</span> location <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; - &#34;</span> <span style="color:#f92672">+</span> topic <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; - &#34;</span> <span style="color:#f92672">+</span> language)
+                client <span style="color:#f92672">=</span> scraparazzie<span style="color:#f92672">.</span>NewsClient(language <span style="color:#f92672">=</span> language, location <span style="color:#f92672">=</span> location, query <span style="color:#f92672">=</span> items, max_results <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 利用scraparazie尋找詢問的關鍵字｜Searching the keywords through scraparazzie</span>
+                client<span style="color:#f92672">.</span>print_news()
+                output <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>export_news() <span style="color:#75715e"># 輸出結果｜Output searching result</span>
+                <span style="color:#66d9ef">for</span> export_items <span style="color:#f92672">in</span> output:
+                    message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;處理關鍵字｜Processing keywords: &#34;</span> <span style="color:#f92672">+</span> items <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;標題｜Title: &#34;</span> <span style="color:#f92672">+</span> export_items[<span style="color:#e6db74">&#39;title&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;新聞來源｜Source: &#34;</span> <span style="color:#f92672">+</span> export_items[<span style="color:#e6db74">&#39;source&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;連結｜Link: &#34;</span> <span style="color:#f92672">+</span> export_items[<span style="color:#e6db74">&#39;link&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;發布時間｜Publish date: &#34;</span> <span style="color:#f92672">+</span> export_items[<span style="color:#e6db74">&#39;publish_date&#39;</span>]
+                    lineNotifyMessage(token, message) <span style="color:#75715e"># 運行lineNotifyMessage()｜Run lineNotifyMessage()</span>
+                sleep_time <span style="color:#f92672">=</span> randrange (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)
+                time<span style="color:#f92672">.</span>sleep(sleep_time)
+
+searching_topic(locations, keywords, chooen_language)
+</code></pre></div><p>Since I want to search more than one set of keywords, so I just write a function with loops to run. You can also set multiple locations. But a warm reminder that if you want to search different languages, strongly recommend to run separately, or else it may cause empty result. Also, I don&rsquo;t recommend to search huge amount of news posts, so don&rsquo;t set the max_result too large. For other setting, please feel free to check out <a href="https://github.com/herboratory/scraparazzie">github</a> of scraparazzie.</p>
+<h3 id="step-3">STEP 3:</h3>
+<ul>
+<li>Run the code</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python lineNotifyMessage<span style="color:#f92672">.</span>py
+</code></pre></div><ul>
+<li>Then you can receive news at LINE Notify.</li>
+</ul>
+<p><img src="/images/WhatsApp-Image-2020-04-18-at-17.05.08-576x1024.jpeg" alt=""></p>
+<p><img src="/images/WhatsApp-Image-2020-04-18-at-17.04.36-576x1024.jpeg" alt=""></p>
+<p><img src="/images/WhatsApp-Image-2020-04-18-at-17.04.37-576x1024.jpeg" alt=""></p>
+<p>This programe only get the news and send to LINE Notify. If you want to set the program runs with schedule, or run on cloud, just Google and look for the setup.</p>
+<p>Except LINE Notify, it can be use as Slack bot to send news to workspace. Hmm&hellip;this reminds me I was working at a department quite some years ago for a very short while, you know, in the morning (even earlier than I arrived - I most arrived top-3 earliest of the whole office), I always saw another team to dig into newspaper and newspaper cutting.🤭 Going through programming is much more convenient. 😬</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Scraparazzie Release</title>
+            <link>https://herboratory.github.io/engineering-department/en/posts/2020/04/scraparazzie-release/</link>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://herboratory.github.io/engineering-department/en/posts/2020/04/scraparazzie-release/</guid>
+            <description>Project Information: scraparazzie is a Python package for searching specific topic or keywords of Google News feeds. It had been spending for around 4 days to deal with scraparazzie, a python package for searching Google News feeds. This package is based on gnewsclient as framework to modify and enhance features.
+Features that gnewsclient have:  Available to set language, location, topic and number of output items for searching; Available to show image and video (if there is) link of the news  Features that scraparazzie have:  Available to show publish datetime; Except topic, keywords searching is included (either topic or keyword searching, and keyword searching is the top priority searching); Take away the feature to show image and video (if there is) link of the news; Result shows from latest to oldest; Export as list  The main reason I decided to deal with this project is personal use - I need a something that can help me to collect latest news with title, source, link and publish date at fixed time for further application.</description>
+            <content type="html"><![CDATA[<h4 id="project-information">Project Information:</h4>
+<p>scraparazzie is a Python package for searching specific topic or keywords of Google News feeds.
+It had been spending for around 4 days to deal with scraparazzie, a python package for searching Google News feeds. This package is based on gnewsclient as framework to modify and enhance features.</p>
+<h4 id="features-that-gnewsclient-have">Features that gnewsclient have:</h4>
+<ol>
+<li>Available to set language, location, topic and number of output items for searching;</li>
+<li>Available to show image and video (if there is) link of the news</li>
+</ol>
+<h4 id="features-that-scraparazzie-have">Features that scraparazzie have:</h4>
+<ol>
+<li>Available to show publish datetime;</li>
+<li>Except topic, keywords searching is included (either topic or keyword searching, and keyword searching is the top priority searching);</li>
+<li>Take away the feature to show image and video (if there is) link of the news;</li>
+<li>Result shows from latest to oldest;</li>
+<li>Export as list</li>
+</ol>
+<p>The main reason I decided to deal with this project is personal use - I need a something that can help me to collect latest news with title, source, link and publish date at fixed time for further application. Of course I searched tons of tutorial, mostly suggesting to do it through newspaper3k or beautifulsoup. There are some package and code for Google News on github, e.g. google-news-scraper, GoogleNews, google_news, gnp and gnewsclient. However, there are not many features and I can&rsquo;t find a package that fits all my requirement. gnewsclient is the best one I can find, but still I can&rsquo;t get publish datetime. At the beginning I wanted to modify directly from the package, and I realised it&rsquo;s not an easy job; furthermore, I might want to plug some more features. In the end I just left the framework of gnewsclient and reformed the news processing part. With tons of trial &amp; error and precious help from excellent programmers, the package works as I want&hellip;and yes, I can temporary take a break from here. Before get things done, there was a post few years ago at gnewsclient made a request to put keyword searching feature but no feedback. It didn&rsquo;t look difficult and didn&rsquo;t take much effort to modify the code. After that, I packed the package - my very first Python package EVER in my life (sounds like I should celebrate? As a non-professional coder&hellip;😬). It was kind of silly that I realised I should have put the export-as-list feature and debug few tiny error of the Readme.md, so kind of taking me some time to deal with it - and become v1.2.4.</p>
+<p>v1.2.4 is the relatively stable version. I also debug some situation for newly installation that may face, there should be less error. If there is question or enquiry, bugs reporting and things, please issue at Github.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
